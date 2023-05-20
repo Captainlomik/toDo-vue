@@ -1,32 +1,41 @@
 <template>
-  <my-navbar></my-navbar>
-  <div class="app">
-    <router-view></router-view>
-  </div>
+  <v-app id='app'>
+    <my-navbar></my-navbar>
+    <div class="body">
+      <router-view />
+    </div>
+  </v-app>
 </template>
 
 <script>
 
-export default {
 
+export default {
+  name: 'App',
+
+  components: {
+
+  },
+
+  data: () => ({
+    //
+  }),
 }
 </script>
 
 <style>
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
 }
 
-ul, li{
-  text-transform: none;
-  text-decoration: none;
+ul,
+li {
   list-style: none;
 }
 
-.app{
-  margin: 0 200px;
+.body {
+  margin: 0 250px;
 }
-
 </style>
