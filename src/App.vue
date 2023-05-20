@@ -1,8 +1,8 @@
 <template>
+  <div class="body">
     <my-navbar></my-navbar>
-    <div class="body">
-      <router-view />
-    </div>
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -22,19 +22,40 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
 * {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 ul,
 li {
   list-style: none;
 }
 
-.body {
-  margin: auto 250px 0 250px;
-  height: calc(100vh - 65px);
+h1,
+h2,
+h3,
+p,
+a,
+small {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
 }
-</style>
+
+h1 {
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 68px;
+}
+
+.body {
+  margin: 0 150px;
+  height: calc(100vh - 50px);
+}</style>
