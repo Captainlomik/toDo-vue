@@ -1,33 +1,39 @@
 <template>
-    <v-app-bar class="navbar" :elevation="2">
-        <!-- <v-app-bar-title>Title</v-app-bar-title> -->
+    <div class="navbar">
         <div class="navbar__wrap">
+            <a class="navbar__logo" @click="$router.push('/')"><img class="navbar__logo-img" src="@/assets/logo.svg"
+                    alt="focus_logo"></a>
             <nav>
                 <ul class="navbar__ul">
-                    <li><a class="navbar__link" @click="$router.push('/')">Главная</a></li>
-                    <li><a class="navbar__link" @click="$router.push('/directory')">Справочник</a></li>
+                    <li><a class="navbar__link" @click="$router.push('/directory')"><img src="@/assets/book.svg"
+                                alt="directory_page"></a></li>
+                    <li><a class="navbar__link" @click="$router.push('/account')"><img src="@/assets/avatar.svg"
+                                alt="account_page"></a></li>
                 </ul>
             </nav>
-            <MyAccountImg></MyAccountImg>
         </div>
-    </v-app-bar>
+    </div>
 </template>
 
 <script>
-import MyAccountImg from './MyAccountImg.vue';
 
 export default {
     name: "my-navbar",
-    components: { MyAccountImg }
 }
 </script>
 
 <style lang="scss" scoped>
 .navbar {
+    width: 100%;
+
+    &__logo-img {
+        max-height: 56px;
+        cursor: pointer;
+    }
+
     &__wrap {
         height: 100%;
-        width: 100%;
-        margin: 0 250px;
+        padding: 20px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,18 +44,19 @@ export default {
         align-items: center;
         height: 100%;
 
-        li{
-            margin-right: 20px;
+        li {
+            margin-right: 30px;
         }
 
-        li::last-child{
+        li::last-child {
             margin-right: 0;
         }
+
     }
 
     &__link {
         cursor: pointer;
     }
 
-}
-</style>
+
+}</style>
