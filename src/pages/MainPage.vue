@@ -6,7 +6,9 @@
                 <select name="" id="">
                     <option value=""></option>
                 </select>
-                <my-button>за работу</my-button>
+                <v-btn>
+  Button
+</v-btn>
             </div>
         </div>
 

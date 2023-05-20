@@ -1,5 +1,6 @@
 <template>
-    <div class="navbar">
+    <v-app-bar class="navbar" :elevation="2">
+        <!-- <v-app-bar-title>Title</v-app-bar-title> -->
         <div class="navbar__wrap">
             <nav>
                 <ul class="navbar__ul">
@@ -9,7 +10,7 @@
             </nav>
             <MyAccountImg></MyAccountImg>
         </div>
-    </div>
+    </v-app-bar>
 </template>
 
 <script>
@@ -23,11 +24,9 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-    height: 50px;
-    background: lightgray;
-
     &__wrap {
         height: 100%;
+        width: 100%;
         margin: 0 250px;
         display: flex;
         justify-content: space-between;
@@ -38,6 +37,14 @@ export default {
         display: flex;
         align-items: center;
         height: 100%;
+
+        li{
+            margin-right: 20px;
+        }
+
+        li::last-child{
+            margin-right: 0;
+        }
     }
 
     &__link {
