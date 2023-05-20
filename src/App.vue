@@ -1,10 +1,8 @@
 <template>
-  <v-app id='app'>
     <my-navbar></my-navbar>
     <div class="body">
       <router-view />
     </div>
-  </v-app>
 </template>
 
 <script>
@@ -36,6 +34,7 @@ li {
 }
 
 .body {
-  margin: 0 250px;
+  margin: auto 250px 0 250px;
+  height: calc(100vh - 65px);
 }
 </style>
