@@ -36,7 +36,7 @@ export default {
     }
 
     &__wrap {
-        height: calc(100vh - 100px);
+        height: calc(100vh - 101px);
         display: flex;
         flex-direction: column;
         justify-content: space-around;

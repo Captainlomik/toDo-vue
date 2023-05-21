@@ -57,5 +57,8 @@ h1 {
 
 .body {
   margin: 0 150px;
-  height: calc(100vh - 50px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }</style>
