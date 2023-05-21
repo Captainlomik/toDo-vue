@@ -4,7 +4,7 @@
             <h1 class="main__header">Над чем поработаем?</h1>
             <p class="main__txt">Звезды сообщили, что сегодня подходящий день, чтобы ботать</p>
             <div class="choose__btns">
-                <select name="" id=""></select>
+               <my-select></my-select>
                 <my-button class="choose__btn" size="large">За работу</my-button>
             </div>
         </div>
@@ -37,10 +37,12 @@ export default {
 
     &__wrap {
         height: calc(100vh - 101px);
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+
     }
 
     &__choose {
