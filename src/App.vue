@@ -1,7 +1,9 @@
 <template>
-  <div class="body">
+  <div class="all">
     <my-navbar></my-navbar>
-    <router-view />
+    <div class="body">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -55,10 +57,12 @@ h1 {
   line-height: 68px;
 }
 
-.body {
+.all {
   margin: 0 150px;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}</style>
+}
+
+.body {
+  height: calc(100vh - 101px);
+}
+</style>
