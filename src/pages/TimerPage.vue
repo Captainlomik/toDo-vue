@@ -1,10 +1,11 @@
 <template>
     <div class="timer">
         <div class="timer__clock">
-            <p class="timer__clock-time"> 20:20</p>
+            <timer-vue :time-left="timeLeft" :class="{ visible: active }" class="timer__clock-time" />
             <div class="timer__btns">
-                <my-small-button class="timer__btn end">завершить</my-small-button>
-                <my-small-button class="timer__btn reset">перезагрузить</my-small-button>
+                <my-small-button @click="stopTimer" class="timer__btn end">завершить</my-small-button>
+                <!-- <my-small-button @click="handleStart" class="timer__btn start">Начать</my-small-button> -->
+                <my-small-button @click="resetTimer" class="timer__btn reset">перезагрузить</my-small-button>
             </div>
         </div>
         <div class="checkBlock__wrap">
@@ -20,8 +21,54 @@
 </template>
 
 <script>
-export default {
+import TimerVue from '@/components/Timer';
 
+export default {
+    data() {
+        return {
+            workPeriod: 1500,
+            timePassed: 0,
+            active: false
+        }
+    },
+    components:{
+        TimerVue
+    },
+    created: function(){
+        this.handleStart()
+    },
+    computed: {
+        timeLeft() {
+            return this.active ? this.workPeriod - this.timePassed : 0
+        }
+    },
+    methods: {
+        handleStart() {
+            this.active = true
+            this.startTimer()
+        },
+        startTimer() {
+            const start = Date.now()
+            let tickInterval = setInterval(tick.bind(this), 500)
+            function tick() {
+                if (this.timeLeft > 0) {
+                    this.timePassed = Math.floor((Date.now() - start) / 1000)
+                }
+                else {
+                    clearInterval(tickInterval)
+                    this.active = false;
+                    this.timePassed = 0;
+                }
+            }
+        },
+        stopTimer(){
+            console.log(this.timePassed)
+            this.active = false;
+        },
+        resetTimer(){
+            this.timePassed = 0
+        }
+    }
 }
 </script>
 
