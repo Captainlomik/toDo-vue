@@ -4,13 +4,13 @@
             <h1 class="main__header">Над чем поработаем?</h1>
             <p class="main__txt">Звезды сообщили, что сегодня подходящий день, чтобы ботать</p>
             <div class="choose__btns">
-               <my-select></my-select>
-                <my-button class="choose__btn" size="large">За работу</my-button>
+                <my-select v-model="selectLesson" :options="lessons"></my-select>
+                <my-button class="choose__btn" size="large" @click="$router.push('/timer')">За работу</my-button>
             </div>
         </div>
         <div class="result">
-            <div class="result__wrap">
-                <p>1 час 40 минут фокуса сегодня</p>
+            <div class="result__wrap" v-if="selectLesson">
+                <p >{{ updated() }} фокуса сегодня</p>
             </div>
         </div>
 
@@ -19,6 +19,30 @@
 
 <script>
 export default {
+    data() {
+        return {
+            selectLesson: '',
+            lessons: [
+                { value: 'ru', name: 'Русский', time: 90 },
+                { value: 'math', name: 'Математика', time: 180 }
+            ]
+        }
+    },
+    methods: {
+        countTime(time) {
+            let hours = Math.floor(time / 60)
+            let minutes = Math.floor(time % 60)
+
+            minutes = minutes < 10 ? '0' + minutes : minutes
+            return `${hours} час ${minutes} минут`
+        },
+        updated() {
+            if (this.selectLesson) {
+                let time = this.lessons.filter(el => el.value === this.selectLesson)[0].time
+               return  this.countTime(time)
+            }
+        }
+    },
 
 }
 </script>
@@ -64,11 +88,12 @@ export default {
 
 }
 
-.result{
-    &__wrap{
+.result {
+    min-height: 60px;
+    &__wrap {
         padding: 16px 76px;
         background: black;
-        color:white;
+        color: white;
         text-align: center;
         border-radius: $radius;
     }

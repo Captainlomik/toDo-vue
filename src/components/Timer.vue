@@ -5,6 +5,9 @@
 </template>
 
 <script>
+
+// import calckTimeMixin from '@/mixins/calckTimeMixin';
+
 export default {
     name: 'timer-vue',
     props: {
@@ -20,8 +23,10 @@ export default {
             seconds = seconds < 10 ? '0' + seconds : seconds
             
             return `${minutes}:${seconds}`
+
         }
     },
+    // mixins:[calckTimeMixin]
 }
 </script>
 
