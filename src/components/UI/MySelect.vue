@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 select {
-    width: 60%;
+    width: 50%;
     min-width: 320px;
     border-radius: $radius;
     padding: 20px;

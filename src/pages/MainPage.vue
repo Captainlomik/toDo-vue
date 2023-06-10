@@ -10,7 +10,7 @@
         </div>
         <div class="result">
             <div class="result__wrap" v-if="selectLesson">
-                <p >{{ updated() }} фокуса сегодня</p>
+                <!-- <p>{{ updated }} фокуса сегодня</p> -->
             </div>
         </div>
 
@@ -18,33 +18,26 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex'
+
 export default {
     data() {
         return {
-            selectLesson: '',
-            lessons: [
-                { value: 'ru', name: 'Русский', time: 90 },
-                { value: 'math', name: 'Математика', time: 180 }
-            ]
         }
     },
     methods: {
-        countTime(time) {
-            let hours = Math.floor(time / 60)
-            let minutes = Math.floor(time % 60)
-
-            minutes = minutes < 10 ? '0' + minutes : minutes
-            return `${hours} час ${minutes} минут`
-        },
-        updated() {
-            if (this.selectLesson) {
-                let time = this.lessons.filter(el => el.value === this.selectLesson)[0].time
-               return  this.countTime(time)
-            }
-        }
     },
-
+    computed: {
+        ...mapState({
+            selectLesson: state => state.time.selectLesson,
+            lessons: state => state.time.lessons
+        }),
+        ...mapGetters([
+            'updated'
+        ]),
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -78,7 +71,7 @@ export default {
 .choose {
     &__btns {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
     }
 
@@ -90,6 +83,7 @@ export default {
 
 .result {
     min-height: 60px;
+
     &__wrap {
         padding: 16px 76px;
         background: black;
